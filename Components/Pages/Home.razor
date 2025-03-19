@@ -1,0 +1,42 @@
+﻿@page "/"
+
+<PageTitle>Stun Apps</PageTitle>
+
+<section class="relative">
+
+    <div class="absolute left-1/2 transform -translate-x-1/2 top-0 pointer-events-none -z-10"
+         aria-hidden="true">
+        <img class="max-w-none" src="./images/stripes.svg" width="768" height="432" alt="Stripes" />
+    </div>
+
+    <div class="absolute left-1/2 -translate-x-1/2 -top-32 ml-[580px] pointer-events-none" aria-hidden="true">
+        <div class="w-80 h-80 rounded-full bg-gradient-to-tr from-blue-500 opacity-50 blur-[160px]"></div>
+    </div>
+    <div class="absolute left-1/2 -translate-x-1/2 top-[420px] ml-[380px] pointer-events-none" aria-hidden="true">
+        <div class="w-80 h-80 rounded-full bg-gradient-to-tr from-blue-500 to-gray-900 opacity-50 blur-[160px]">
+        </div>
+    </div>
+    <div class="absolute left-1/2 -translate-x-1/2 top-[640px] -ml-[300px] pointer-events-none" aria-hidden="true">
+        <div class="w-80 h-80 rounded-full bg-gradient-to-tr from-blue-500 to-gray-900 opacity-50 blur-[160px]">
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <div class="max-w-3xl mx-auto pt-32 pb-12 md:pt-40 md:pb-20">
+
+            <div class="text-center pb-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-5 border-y [border-image:linear-gradient(to_right,transparent,theme(colors.slate.300/.8),transparent)1]">Stun Pages</h1>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-lg text-gray-700">enter the group key to access your personalized homepage.</p>
+                </div>
+            </div>
+
+            <div>
+                <input id="group_input" @bind-value="@Group" @onkeydown="GoTo"  @oninput="OnInput" class="w-full bg-white/70 text-gray-400 text-sm inline-flex text-center items-center justify-between pl-4 pr-3 py-3.5 shadow shadow-black/[0.03] rounded-lg relative before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:[background:linear-gradient(theme(colors.gray.100),theme(colors.gray.200))_border-box] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] before:[mask-composite:exclude_!important] before:pointer-events-none whitespace-nowrap" />
+                 
+            </div>
+        </div>
+
+    </div>
+</section>

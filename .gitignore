@@ -1,0 +1,7 @@
+﻿.vs
+bin
+obj
+node_modules
+/.config
+/Properties
+*.exe

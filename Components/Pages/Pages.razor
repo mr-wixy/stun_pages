@@ -1,0 +1,85 @@
+﻿@page "/p/{group}"
+
+<PageTitle>Pages - @Group</PageTitle>
+
+<section class="relative">
+
+    <div class="pointer-events-none absolute top-0 left-1/2 -z-10 -translate-x-1/2 transform"
+         aria-hidden="true">
+        <img class="max-w-none" src="./images/stripes.svg" width="768" height="432" alt="Stripes" />
+    </div>
+
+    <div class="pointer-events-none absolute -top-32 left-1/2 ml-[580px] -translate-x-1/2" aria-hidden="true">
+        <div class="bg-gradient-to-tr h-80 w-80 rounded-full from-blue-500 opacity-50 blur-[160px]"></div>
+    </div>
+    <div class="pointer-events-none absolute top-[420px] left-1/2 ml-[380px] -translate-x-1/2" aria-hidden="true">
+        <div class="bg-gradient-to-tr h-80 w-80 rounded-full from-blue-500 to-gray-900 opacity-50 blur-[160px]">
+        </div>
+    </div>
+    <div class="pointer-events-none absolute top-[640px] left-1/2 -ml-[300px] -translate-x-1/2" aria-hidden="true">
+        <div class="bg-gradient-to-tr h-80 w-80 rounded-full from-blue-500 to-gray-900 opacity-50 blur-[160px]">
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+
+        <div class="mx-auto max-w-3xl pt-32 pb-10 md:pt-40">
+
+            <div class="text-center">
+                <h3 class="mb-6 border-y text-4xl font-bold md:text-5xl [border-image:linear-gradient(to_right,transparent,theme(colors.slate.300/.8),transparent)1]">Stun Apps</h3>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="pb-12 md:pb-20">
+
+        <div class="space-y-10">
+            @foreach(var cate in Apps.Select(p => p.Category).Distinct().OrderByDescending(p => p))
+            {
+                <section>
+                    @if(!string.IsNullOrEmpty(cate))
+                    {
+                        <div class="mb-5 flex items-center justify-between space-x-2">
+                            <h2 class="truncate text-xl font-bold">@cate</h2>
+                        </div>
+                    }
+                    <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                        @foreach (var item in Apps.Where(p => p.Category == cate).OrderBy(p => p.Order))
+                        {
+                            <article @onclick="@(() => GoTo(item))" class="group relative flex w-full flex-col rounded-2xl bg-white/70 p-5 shadow-lg shadow-black/[0.03] transition before:absolute before:inset-0 before:rounded-[inherit] before:border before:border-transparent before:pointer-events-none hover:bg-white before:[background:linear-gradient(theme(colors.gray.100),theme(colors.gray.200))_border-box] before:[mask:linear-gradient(white_0_0)_padding-box,_linear-gradient(white_0_0)] before:[mask-composite:exclude_!important]">
+                                <svg class="absolute top-5 right-5 transition-transform group-hover:rotate-45" xmlns="http://www.w3.org/2000/svg" width="9" height="9">
+                                    <path class="fill-gray-400" d="M1.065 9 0 7.93l6.456-6.46H1.508L1.519 0H9v7.477H7.516l.011-4.942L1.065 9Z" />
+                                </svg>
+                                <div class="mb-3 inline-flex justify-between items-center">
+                                    <div class="relative">
+                                        @if(string.IsNullOrEmpty(item.Icon))
+                                        {
+                                            <img class="rounded-full shadow-lg shadow-black/[0.03]" src="./images/integration-02.svg" width="48" height="48" alt="Icon 01">
+                                        }
+                                        else
+                                        {
+                                            <img class="rounded-full shadow-lg shadow-black/[0.03]" src="@item.Icon" width="48" height="48" alt="Icon 01">
+                                            <img class="absolute top-0 right-0" src="./images/badge.svg" width="16" height="16" alt="Badge" aria-hidden="true">
+                                        }
+                                    </div>
+                                    <p class="text-sm text-gray-700">@($"{item.Ip}:{item.Port}")</p>
+                                </div>
+                                <h3 class="mb-1">
+                                    <a class="font-bold before:absolute before:inset-0">@item.Name</a>
+                                </h3>
+                                <p class="text-sm text-gray-700">@item.Description</p>
+                            </article>
+
+                        }
+                    </div>
+                </section>
+            }
+        </div>
+    </div>
+</div>
+
+
+
