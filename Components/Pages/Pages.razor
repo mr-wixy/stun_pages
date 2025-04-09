@@ -46,6 +46,12 @@
                             <h2 class="truncate text-xl font-bold">@cate</h2>
                         </div>
                     }
+                    else if (Apps.Exists(p => !string.IsNullOrEmpty(p.Category)))
+                    {
+                        <div class="mb-5 flex items-center justify-between space-x-2">
+                            <h2 class="truncate text-xl font-bold">Default</h2>
+                        </div>
+                    }
                     <div class="grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
                         @foreach (var item in Apps.Where(p => p.Category == cate).OrderBy(p => p.Order))
                         {
